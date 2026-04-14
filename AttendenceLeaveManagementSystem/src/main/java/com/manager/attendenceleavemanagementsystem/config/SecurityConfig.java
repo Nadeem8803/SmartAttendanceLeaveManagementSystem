@@ -34,7 +34,9 @@ public class SecurityConfig {
         httpSecurity
                 .authorizeHttpRequests(
                         auth ->
-                                auth .requestMatchers("/api/authentication/**").permitAll()
+                                auth
+                                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                                        .requestMatchers("/api/authentication/**").permitAll()
                                         .requestMatchers("/api/attendance/**").permitAll()
 
                                         // EMPLOYEE FORBIDDEN APIs
