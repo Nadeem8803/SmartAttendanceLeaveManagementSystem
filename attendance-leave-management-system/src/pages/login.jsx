@@ -6,6 +6,7 @@ export default function Login(){
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  
 
   const handleLogin = async () => {
     try{
@@ -13,17 +14,16 @@ export default function Login(){
         "http://localhost:8080/api/authentication/login",
         {
           email : email,
-          password : password
-        },
-        {
-          params: {
-            loggedInEmployeeId: 15
-          }
+          password : password,
         }
       );
 
-      localStorage.setItem("token", response.data);
+      localStorage.setItem("token", response.data.token);
+      localStorage.setItem("employeeId", response.data.employeeId);
+      localStorage.setItem("role", response.data.role.toUpperCase());
 
+      console.log(response.data.role);
+      
       console.log("token :", response.data);
       // window.location.href = "/dashboard";
       window.location.reload();

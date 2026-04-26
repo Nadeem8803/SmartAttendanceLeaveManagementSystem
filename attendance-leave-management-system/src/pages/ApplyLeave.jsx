@@ -15,17 +15,18 @@ export default function ApplyLeave(){
             return;
         }
 
-        if(endDate > startDate){
+        if(endDate < startDate){
             alert("End Date Cannot be Before The Start Date.");
             return;
         }
 
         try{
             const token = localStorage.getItem("token");
+            const employeeId = localStorage.getItem("employeeId")
             const response = await axios.post(
                 "http://localhost:8080/api/leave",
                 {
-                    employeeId: 15,
+                    employeeId: Number(employeeId),
                     leaveType: leaveType,
                     startDate: startDate,
                     endDate: endDate,
@@ -75,7 +76,7 @@ export default function ApplyLeave(){
 
              <input type="date"
              value={endDate}
-             min={today}
+             min={startDate | today}
              onChange={(e)=>{
                 setEndDate(e.target.value)
              }} />

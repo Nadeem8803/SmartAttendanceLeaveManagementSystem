@@ -1,4 +1,5 @@
 import ApplyLeave from "./ApplyLeave"
+import MyLeaves from './MyLeaves';
 
 export default function Dashboard(){
 
@@ -16,6 +17,8 @@ export default function Dashboard(){
             </button>
             <hr />
             <ApplyLeave/>
+            <hr />
+            <MyLeaves/>
 
         </div>
     )

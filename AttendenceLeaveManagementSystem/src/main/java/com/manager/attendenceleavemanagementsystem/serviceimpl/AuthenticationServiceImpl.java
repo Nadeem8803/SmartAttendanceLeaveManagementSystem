@@ -1,5 +1,6 @@
 package com.manager.attendenceleavemanagementsystem.serviceimpl;
 
+import com.manager.attendenceleavemanagementsystem.dto.LoginResponse;
 import com.manager.attendenceleavemanagementsystem.entity.Employee;
 import com.manager.attendenceleavemanagementsystem.repository.EmployeeRepository;
 import com.manager.attendenceleavemanagementsystem.service.AuthenticationService;
@@ -22,7 +23,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
 
     @Override
-    public String employeeLoginRequeest(String email, String password) {
+    public LoginResponse employeeLoginRequeest(String email, String password) {
 
         Employee employee = employeeRepository.findByEmpEmail(email).orElseThrow(() -> new RuntimeException("user not found"));
 
@@ -31,7 +32,11 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             throw new RuntimeException("wrong password");
         }
 
-        return jwtUtil
-                .generateToken(employee.getEmpEmail(),employee.getEmpAuthenticationRole());
+        String token = jwtUtil.generateToken(
+                employee.getEmpEmail(),
+                employee.getEmpAuthenticationRole()
+        );
+
+        return new LoginResponse(token,employee.getEmpId(),employee.getEmpAuthenticationRole());
     }
 }
