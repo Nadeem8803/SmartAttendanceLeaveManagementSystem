@@ -11,7 +11,7 @@ public interface EmployeeService {
     public EmployeeResponseDTO createEmployee(EmployeeRequestDTO employeeRequestDTO, Employee loggedInEmployee);
     public Employee getEmployeeById(Long employeeId);
     public List<Employee> getAllEmployees();
-    public void updateEmployeeStatus(Long employeeId,Boolean active,Long loggedInEmployeeId);
+    public void updateEmployeeStatus(Long employeeId,Boolean active);
     public List<Employee> getEmployeeAtciveTrue();
     public List<Employee> getEmployeeActiveFalse();
 }

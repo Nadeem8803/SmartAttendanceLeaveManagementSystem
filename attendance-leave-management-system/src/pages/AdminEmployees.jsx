@@ -29,26 +29,29 @@ export default function AdminEmployees() {
     };
 
     //staus cahnge employee
-
+    
     const toggleActive = async (empId, currentStatus) => {
-        try{
-            const token = localStorage.getItem("token");
-            await axios.put(
-                `http://localhost:8080/api/employee/active/${empId}`,
-                {
-                    headers:{
-                        Authorization : `Bearer ${token}`
-                    }
-                }
-            );
-            alert("Status updated");
-            fetchEmployees();
-        }catch(error){
-            console.log(error);
-            alert("Upadte Failed");
-        }
-    }
+    try {
+        const token = localStorage.getItem("token");
 
+        await axios.put(
+            `http://localhost:8080/api/employee/active/${empId}`,
+            !currentStatus,
+            {
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"   // ✅ Add this line
+                }
+            }
+        );
+        alert("updated successfully.");
+        fetchEmployees();
+    } catch (error) {
+        console.log(error);
+        alert("updated failed.");
+    }
+};
+    
     return (
         <div>
             <h3>All Employees</h3>
@@ -64,6 +67,7 @@ export default function AdminEmployees() {
                         <th>Department</th>
                         <th>Role</th>
                         <th>Action</th>
+                        
                     </tr>
                 </thead>
 
@@ -76,12 +80,11 @@ export default function AdminEmployees() {
                             <td>{emp.empEmail}</td>
                             <td>{emp.empJoiningDate}</td>
                             <td>{emp.empDepartment}</td>
-                            <td>{emp.empAuthenticationRole}</td>
+                            <td>{emp.empAuthenticationRole.toUpperCase()}</td>
                             <td>
-                                <button onClick={() => toggleActive(emp.empId,emp.active)}>
-                                    {emp.active?"Deactive":"Active"}
-                                </button>
+                                <button onClick={()=> toggleActive(emp.empId, emp.active)}>{emp.active?"Activate":"Deactivate"}</button>
                             </td>
+                            
                         </tr>
                     ))}
                 </tbody>

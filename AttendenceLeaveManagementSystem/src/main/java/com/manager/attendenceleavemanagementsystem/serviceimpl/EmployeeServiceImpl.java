@@ -77,13 +77,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     @Override
-    public void updateEmployeeStatus(Long employeeId, Boolean active, Long loggedInEmployeeId) {
+    public void updateEmployeeStatus(Long employeeId, Boolean active) {
 
-        Employee loggedInEmployee = employeeRepository
-                .findById(loggedInEmployeeId)
-                .orElseThrow(()-> new RuntimeException("employee not found with id : " + loggedInEmployeeId));
-
-        authrizationUtil.requireAdmin(loggedInEmployee);
 
         Employee employee = employeeRepository.findById(employeeId).orElseThrow(() -> new RuntimeException("employee not found with is :" + employeeId));
         employee.setActive(active);

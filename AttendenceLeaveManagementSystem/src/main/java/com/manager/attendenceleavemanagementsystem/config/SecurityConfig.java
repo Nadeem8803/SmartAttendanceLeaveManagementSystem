@@ -4,6 +4,7 @@ import com.manager.attendenceleavemanagementsystem.filter.JwtAuthenticationFilte
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.security.config.Customizer;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
@@ -26,6 +27,7 @@ public class SecurityConfig {
                 .csrf(csrf -> csrf.disable());
 
 
+
         httpSecurity
                 .sessionManagement(
                         session ->
@@ -42,7 +44,7 @@ public class SecurityConfig {
 
                                         // EMPLOYEE FORBIDDEN APIs
                                         .requestMatchers(HttpMethod.POST, "/api/employee").hasRole("ADMIN")
-                                        .requestMatchers(HttpMethod.PUT, "/api/employee/active/**").hasRole("ADMIN")
+//                                        .requestMatchers(HttpMethod.PUT, "/api/employee/active/**").hasRole("ADMIN")
                                         .requestMatchers(HttpMethod.PUT, "/api/leave/status/**").hasRole("ADMIN")
                                         .requestMatchers(HttpMethod.DELETE, "/api/leave/**").hasRole("ADMIN")
                                         .requestMatchers(HttpMethod.PUT, "/api/employee/active/**").hasRole("ADMIN")

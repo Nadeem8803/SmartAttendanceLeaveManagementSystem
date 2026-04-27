@@ -8,17 +8,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:5173",
-allowedHeaders = "*",
-        methods = {
-                RequestMethod.GET,
-                RequestMethod.POST,
-                RequestMethod.PUT,
-                RequestMethod.DELETE,
-                RequestMethod.OPTIONS
-
-        }
-)
+@CrossOrigin(origins = "http://localhost:5173/")
 @RestController
 @RequestMapping("/api/employee")
 public class EmployeeController {
@@ -62,8 +52,8 @@ public class EmployeeController {
 
 
     @PutMapping("/active/{employeeId}")
-    public void updateEmployeeStatus(@PathVariable Long employeeId,@RequestBody boolean active,@RequestParam Long loggedInEmployeeId){
-        employeeService.updateEmployeeStatus(employeeId,active,loggedInEmployeeId);
+    public void updateEmployeeStatus(@PathVariable Long employeeId,@RequestBody boolean active){
+        employeeService.updateEmployeeStatus(employeeId,active);
     }
 
 
