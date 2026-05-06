@@ -48,6 +48,7 @@ public class SecurityConfig {
                                         .requestMatchers(HttpMethod.PUT, "/api/leave/status/**").hasRole("ADMIN")
                                         .requestMatchers(HttpMethod.DELETE, "/api/leave/**").hasRole("ADMIN")
                                         .requestMatchers(HttpMethod.PUT, "/api/employee/active/**").hasRole("ADMIN")
+                                        .requestMatchers(HttpMethod.GET, "/api/employee/**").hasRole("ADMIN")
 
 
                                         // ADMIN CAN ACCESS EVERYTHING

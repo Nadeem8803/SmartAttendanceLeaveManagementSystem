@@ -1,68 +1,43 @@
-import { useEffect, useState } from "react";
+import { useEffect,useState } from "react";
 import axios from 'axios';
 
-export default function AdminEmployees() {
+export default function ActiveEmployees() {
+
     const [employees, setEmployees] = useState([]);
     useEffect(() => {
-        fetchEmployees();
-    }, []);
+        fetchActiveEmployees();
+    },[]);    
 
-   
+    const fetchActiveEmployees = async () => {
 
-
-    const fetchEmployees = async () => {
         try {
 
             const token = localStorage.getItem("token");
 
             const response = await axios.get(
-                `http://localhost:8080/api/employee`,
+                `http://localhost:8080/api/employee/status/activeTrue`,
                 {
                     headers: {
-                        Authorization: `Bearer ${token}`
+                        Authorization: `Bearer ${token}`,
                     }
                 }
             );
+
+            
+            
             setEmployees(response.data);
 
         } catch (error) {
             console.log(error);
-            alert("Failed to Fetch Employees.")
+            alert("Not Able To Fetch.");
+
         }
+
     };
-
-    //staus cahnge employee
-
-    const toggleActive = async (empId, currentStatus) => {
-        try {
-            const token = localStorage.getItem("token");
-
-            await axios.put(
-                `http://localhost:8080/api/employee/active/${empId}`,
-                !currentStatus,
-                {
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        "Content-Type": "application/json"   // this is line Added
-                    }
-                }
-            );
-            alert("updated successfully.");
-            fetchEmployees();
-        } catch (error) {
-            console.log(error);
-            alert("updated failed.");
-        }
-    };
-
-   
-
 
     return (
         <div>
-
-            
-            <h3>All Employees</h3>
+            <h3>All Active Employees</h3>
 
             <table border="1" cellPadding="10">
                 <thead>
@@ -74,7 +49,7 @@ export default function AdminEmployees() {
                         <th>Joining Date</th>
                         <th>Department</th>
                         <th>Role</th>
-                        <th>Action</th>
+                    
 
                     </tr>
                 </thead>
@@ -89,15 +64,12 @@ export default function AdminEmployees() {
                             <td>{emp.empJoiningDate}</td>
                             <td>{emp.empDepartment}</td>
                             <td>{emp.empAuthenticationRole.toUpperCase()}</td>
-                            <td>
-                                <button onClick={() => toggleActive(emp.empId, emp.active)}>{!emp.active ? "Activate" : "Deactivate"}</button>
-                            </td>
 
                         </tr>
                     ))}
                 </tbody>
             </table>
         </div>
-    )
+    );
 
 }

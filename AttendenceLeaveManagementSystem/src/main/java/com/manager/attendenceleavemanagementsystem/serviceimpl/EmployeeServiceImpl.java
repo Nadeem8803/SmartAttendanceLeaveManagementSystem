@@ -41,7 +41,7 @@ public class EmployeeServiceImpl implements EmployeeService {
         employee.setEmpEmail(employeeRequestDTO.getEmpEmail());
         employee.setEmpDepartment(employeeRequestDTO.getEmpDepartment());
         employee.setEmpRole(employeeRequestDTO.getEmpRole());
-        employee.setEmpAuthenticationRole(employeeRequestDTO.getEmpAuthenticationRole());
+        employee.setEmpAuthenticationRole(employeeRequestDTO.getEmpAuthenticationRole().toUpperCase());
         employee.setEmpPassword(passwordEncoder.encode(employeeRequestDTO.getEmpPassword()));
 
         Employee savedEmployee = employeeRepository.save(employee);

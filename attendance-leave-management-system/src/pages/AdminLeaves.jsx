@@ -97,21 +97,24 @@ export default function AdminLeaves(){
                                     
                                     <br />
 
-                                    {leave.leaveStatus.toUpperCase() === "PENDING" && (
+                                    
                                         <>
+                                            {leave.leaveStatus.toUpperCase() === "APPROVED" ? "" : (  
                                             <button onClick={() => updateStatus(leave.leaveId, "APPROVED")}>
                                                 Approve
                                             </button>
-
+                                            )}
+                                            
+                                            {leave.leaveStatus.toUpperCase() === "APPROVED" ? "" : (
                                             <button onClick={() => updateStatus(leave.leaveId, "REJECTED")}>
                                                 Reject
                                             </button>
-
+                                            )}
                                             <button onClick={()=> handleDelete(leave.leaveId)}>
                                                 Delete
                                             </button>
                                         </>
-                                    )}
+                                    
                                     <hr style={{padding:"5px"}}/>
                                 </li>
                                 
