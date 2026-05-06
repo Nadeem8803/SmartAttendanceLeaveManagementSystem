@@ -7,6 +7,9 @@ export default function AdminEmployees() {
         fetchEmployees();
     }, []);
 
+   
+
+
     const fetchEmployees = async () => {
         try {
 
@@ -29,31 +32,36 @@ export default function AdminEmployees() {
     };
 
     //staus cahnge employee
-    
-    const toggleActive = async (empId, currentStatus) => {
-    try {
-        const token = localStorage.getItem("token");
 
-        await axios.put(
-            `http://localhost:8080/api/employee/active/${empId}`,
-            !currentStatus,
-            {
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json"   // ✅ Add this line
+    const toggleActive = async (empId, currentStatus) => {
+        try {
+            const token = localStorage.getItem("token");
+
+            await axios.put(
+                `http://localhost:8080/api/employee/active/${empId}`,
+                !currentStatus,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json"   // this is line Added
+                    }
                 }
-            }
-        );
-        alert("updated successfully.");
-        fetchEmployees();
-    } catch (error) {
-        console.log(error);
-        alert("updated failed.");
-    }
-};
-    
+            );
+            alert("updated successfully.");
+            fetchEmployees();
+        } catch (error) {
+            console.log(error);
+            alert("updated failed.");
+        }
+    };
+
+   
+
+
     return (
         <div>
+
+            
             <h3>All Employees</h3>
 
             <table border="1" cellPadding="10">
@@ -67,7 +75,7 @@ export default function AdminEmployees() {
                         <th>Department</th>
                         <th>Role</th>
                         <th>Action</th>
-                        
+
                     </tr>
                 </thead>
 
@@ -82,9 +90,9 @@ export default function AdminEmployees() {
                             <td>{emp.empDepartment}</td>
                             <td>{emp.empAuthenticationRole.toUpperCase()}</td>
                             <td>
-                                <button onClick={()=> toggleActive(emp.empId, emp.active)}>{emp.active?"Activate":"Deactivate"}</button>
+                                <button onClick={() => toggleActive(emp.empId, emp.active)}>{!emp.active ? "Activate" : "Deactivate"}</button>
                             </td>
-                            
+
                         </tr>
                     ))}
                 </tbody>
