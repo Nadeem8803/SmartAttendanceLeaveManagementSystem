@@ -1,0 +1,103 @@
+body{
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #dedefa;
+    color: #111827;
+}
+
+.page-container {
+  padding: 30px;
+  max-width: 1000px;
+  margin: 20px auto;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(15, 23,420, 0.15);
+}
+
+.main-button {
+  padding: 8px 16px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;
+  background-color: #adaeaf;
+  color: white;
+}
+
+.main-input {
+  width: 300px;
+  display: flex;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  border: 1px solid #939191;
+}
+
+.main-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.main-table th,
+.main-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.main-table th {
+  background-color: #f3f4f6;
+}
+
+.common-button {
+  padding: 8px 16px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: 1px solid rgb(4, 80, 68);
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #03c27f;
+  color: white;
+}
+
+.submit-button {
+  padding: 8px 16px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border: 1px solid rgb(4, 80, 68);
+  border-radius: 10px;
+  cursor: pointer;
+  background-color: #2563eb;
+  color: white;
+}
+
+.checkin-button {
+  padding: 10px 18px;
+  margin-right: 12px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #16a34a;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 10px;
+}
+
+.checkout-button {
+  padding: 10px 18px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background-color: #dc2626;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  margin: 10px;
+}
+
+.checkin-button:hover,
+.checkout-button:hover {
+  opacity: 0.9;
+}

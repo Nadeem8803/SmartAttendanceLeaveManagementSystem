@@ -38,7 +38,7 @@ export default function MyAttendance(){
         <div>
             <h3>My Attendance</h3>
 
-            <table border="1" cellPadding="10">
+            <table className="main-table" border="1" cellPadding="10">
                 <thead>
                     <tr>
                         <th>ID</th>

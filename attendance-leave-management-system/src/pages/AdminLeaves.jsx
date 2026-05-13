@@ -82,49 +82,70 @@ export default function AdminLeaves(){
         };
 
     return (
-        <div style={{padding: "20px"}}>
-            <h2>Admin - Manage Leaves</h2>
+        <div className="page-container">
+        <h2>Admin - Manage Leaves</h2>
 
-            {
-                leaves.length === 0 ? (
-                    <p>No Leaves Found</p>
-                ) : (
-                    <ul>
-                        {
-                            leaves.map((leave) => (
-                                <li key={leave.leaveId}>
-                                    {leave.employee?.empName} | {leave.leaveType} | {leave.startDate} to {leave.endDate} | {leave.leaveStatus}
-                                    
-                                    <br />
+        {leaves.length === 0 ? (
+            <p>No Leaves Found</p>
+        ) : (
+            <table className="main-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Employee</th>
+                        <th>Leave Type</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
 
-                                    
-                                        <>
-                                            {leave.leaveStatus.toUpperCase() === "APPROVED" ? "" : (  
-                                            <button onClick={() => updateStatus(leave.leaveId, "APPROVED")}>
-                                                Approve
-                                            </button>
-                                            )}
-                                            
-                                            {leave.leaveStatus.toUpperCase() === "APPROVED" ? "" : (
-                                            <button onClick={() => updateStatus(leave.leaveId, "REJECTED")}>
-                                                Reject
-                                            </button>
-                                            )}
-                                            <button onClick={()=> handleDelete(leave.leaveId)}>
-                                                Delete
-                                            </button>
-                                        </>
-                                    
-                                    <hr style={{padding:"5px"}}/>
-                                </li>
-                                
-                            ))
-                        }
-                        
-                    </ul>
-                )
-            }
+                <tbody>
+                    {leaves.map((leave) => (
+                        <tr key={leave.leaveId}>
+                            <td>{leave.leaveId}</td>
+                            <td>{leave.employee?.empName}</td>
+                            <td>{leave.leaveType}</td>
+                            <td>{leave.startDate}</td>
+                            <td>{leave.endDate}</td>
+                            <td>{leave.leaveStatus}</td>
 
-        </div>
+                            <td>
+                                {leave.leaveStatus.toUpperCase() !== "APPROVED" && (
+                                    <>
+                                        <button
+                                            className="main-button"
+                                            onClick={() =>
+                                                updateStatus(leave.leaveId, "APPROVED")
+                                            }
+                                        >
+                                            Approve
+                                        </button>
+
+                                        <button
+                                            className="main-button"
+                                            onClick={() =>
+                                                updateStatus(leave.leaveId, "REJECTED")
+                                            }
+                                        >
+                                            Reject
+                                        </button>
+                                    </>
+                                )}
+
+                                <button
+                                    className="main-button"
+                                    onClick={() => handleDelete(leave.leaveId)}
+                                >
+                                    Delete
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        )}
+    </div>
     );
 }

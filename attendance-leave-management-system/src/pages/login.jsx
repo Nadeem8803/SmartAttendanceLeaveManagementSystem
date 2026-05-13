@@ -41,22 +41,24 @@ export default function Login(){
   };
 
   return(
-    <div style={{padding: "40px"}}>
+    <div className="page-container">
       <h2>Login</h2>
 
-      <input type="email" 
+      <input type="email"
+      className="main-input" 
       placeholder="Email"
       value={email} 
       onChange={(e) => setEmail(e.target.value)} />
-      <br /><br />
 
       <input type="password" 
+      className="main-input"
       placeholder="Password" 
       value={password} 
       onChange={(e) => setPassword(e.target.value)}/>
-      <br /><br />
+      <br />
 
       <button 
+      className="submit-button"
       onClick={handleLogin}>Login</button>
     
     </div>

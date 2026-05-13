@@ -1,4 +1,5 @@
 import { useState } from "react";
+
 import ApplyLeave from "./ApplyLeave"
 import MyLeaves from './MyLeaves';
 import MarkAttendance from './MarkAttendance';
@@ -13,27 +14,27 @@ export default function Dashboard(){
     };
 
     return(
-        <div style={{padding: "40px"}}>
+        <div className="page-container">
             <h2>Dashboard</h2>
 
-            <button onClick={handleLogout}>
+            <button className="main-button" onClick={handleLogout}>
                 Logout
             </button>
             <hr />
            
-           <button onClick={() => setView("applyLeave")}>
+           <button className="common-button" onClick={() => setView("applyLeave")}>
             Apply Leave
            </button>
 
-           <button onClick={() => setView("myLeaves")}>
+           <button className="common-button" onClick={() => setView("myLeaves")}>
             My Leaves
            </button>
 
-           <button onClick={() => setView("markAttendance")}>
+           <button className="common-button" onClick={() => setView("markAttendance")}>
             Mark-Attendance
            </button>
 
-           <button onClick={() => setView("myAttendance")}>
+           <button className="common-button" onClick={() => setView("myAttendance")}>
             My Attendance
            </button>
 

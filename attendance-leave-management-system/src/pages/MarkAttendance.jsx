@@ -62,11 +62,11 @@ export default function MarkAttendance(){
             <h3>Mark Attendance</h3>
 
             
-            <button onClick={checkIn}>
+            <button className="checkin-button" onClick={checkIn}>
                 Check-In
             </button>
-            <hr />
-            <button onClick={checkOut}>
+            <br />
+            <button className="checkout-button" onClick={checkOut}>
                 Check-Out
             </button>
             <hr />

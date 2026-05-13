@@ -64,27 +64,33 @@ export default function MyLeaves(){
         <div style={{padding: "20px"}}>
             <h2>My Leaves</h2>
 
-            {
-                leaves.length === 0 ? (
-                    <p>No Leaves Found</p>
-                ) : (
-                    <ul>
-                        {
-                            leaves.map((leave) => (
-                                <li key={leave.leaveId}>
-                                    {leave.leaveType} | {leave.startDate} to {leave.endDate} | Status: {leave.leaveStatus}
-                                    <br />
-                                    {leave.leaveStatus === "PENDING" && (
-                                        <button onClick={() => handleDelete(leave.leaveId)}>
-                                            Delete
-                                        </button>
-                                    )}
-                                </li>
-                            ))
-                        }
-                    </ul>
-                )
-            }
+        {leaves.length === 0 ? (
+            <p>No Leaves Found</p>
+        ) : (
+            <table className="main-table">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Leave Type</th>
+                        <th>Start Date</th>
+                        <th>End Date</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    {leaves.map((leave) => (
+                        <tr key={leave.leaveId}>
+                            <td>{leave.leaveId}</td>
+                            <td>{leave.leaveType}</td>
+                            <td>{leave.startDate}</td>
+                            <td>{leave.endDate}</td>
+                            <td>{leave.leaveStatus}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        )}
 
         </div>
     );

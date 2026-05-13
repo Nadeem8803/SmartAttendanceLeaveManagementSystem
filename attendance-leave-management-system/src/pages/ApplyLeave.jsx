@@ -54,43 +54,48 @@ export default function ApplyLeave(){
     };
 
     return(
-        <div style={{padding: "20px"}}>
+        <div className="main-container">
             <h2>Apply Leave</h2>
 
             <input type="text"
+            className="main-input"
             placeholder="Leave Type"
             value={leaveType}
             onChange={(e) => {
                 setLeaveType(e.target.value)
             }} />
-            <br /><br />
+            
 
             <input type="date"
+            className="main-input"
             value={startDate}
             min={today}
             onChange={(e) => {
                 setStartDate(e.target.value)
             }}
              />
-             <br /><br />
+             
 
              <input type="date"
+             className="main-input"
              value={endDate}
              min={startDate | today}
              onChange={(e)=>{
                 setEndDate(e.target.value)
              }} />
-             <br /><br />
+             
 
              <input type="text"
+             className="main-input"
              placeholder="Leave Reason"
              value={leaveReason}
              onChange={(e)=>{
                 setLeaveReason(e.target.value)
              }} />
-             <br /><br />
+             <br />
 
              <button 
+             className="submit-button"
              onClick={handleApplyLeave}>Apply Leave</button>
 
         </div>

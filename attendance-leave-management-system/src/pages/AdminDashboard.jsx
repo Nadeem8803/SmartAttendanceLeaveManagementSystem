@@ -14,34 +14,34 @@ export default function AdminDashboard(){
     };
 
     return(
-        <div style={{padding : "20px"}}>
+        <div className="page-container">
             <h2>Admin Dashboard</h2>
 
 
-                <button onClick={handleLogout}>
+                <button className="main-button" onClick={handleLogout}>
                     Logout
                 </button>
 
                 <br />
                 <hr />
 
-                <button onClick={() => {setView("leaves")}}>
+                <button className="common-button" onClick={() => {setView("leaves")}}>
                     Manage Leaves
                 </button>
 
-                <button onClick={() => setView("employees")}>
+                <button className="common-button" onClick={() => setView("employees")}>
                     Employees 
                 </button>
 
-                <button onClick={() => setView("createEmployee")}>
+                <button className="common-button" onClick={() => setView("createEmployee")}>
                     Create Employee
                 </button>
 
-                <button onClick={() => setView("activeEmployees")}>
+                <button className="common-button" onClick={() => setView("activeEmployees")}>
                     Active Employees
                 </button>
 
-                <button onClick={() => setView("deactiveEmployees")}>
+                <button className="common-button" onClick={() => setView("deactiveEmployees")}>
                     Deactive Employees
                 </button>
 
