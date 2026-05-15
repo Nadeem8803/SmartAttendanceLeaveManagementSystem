@@ -3,6 +3,10 @@ import axios from 'axios';
 
 export default function AdminEmployees() {
 
+    const validatePassword = (password) => {
+        const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,16}$/ ;
+        return passwordRegex.test(password);
+    };
 
     const [empName, setEmpName] = useState("");
     const [empRole, setEmpRole] = useState("");
@@ -13,6 +17,13 @@ export default function AdminEmployees() {
 
     const createEmployee = async () => {
         try {
+
+            if(!validatePassword(empPassword)){
+                alert(
+                    "Password Must Be 8-16 Character And Include Alphabet, Number, And Special Character."
+                );
+                return;
+            }
 
             const token = localStorage.getItem("token");
             const loggedInEmployeeId = localStorage.getItem("employeeId");
@@ -76,62 +87,60 @@ export default function AdminEmployees() {
 
             <input
                 type="text"
+                className="main-input"
                 placeholder="Employee Name"
                 value={empName}
                 onChange={(e) => setEmpName(e.target.value)}
             />
 
-<br />
             <input
                 type="email"
+                className="main-input"
                 placeholder="Employee Email"
                 value={empEmail}
                 onChange={(e) => setEmpEmail(e.target.value)}
             />
 
-            <br />
 
             <input
                 type="text"
+                className="main-input"
                 placeholder="Department"
                 value={empDepartment}
                 onChange={(e) => setEmpDepartment(e.target.value)}
             />
 
-            <br />
-
             <input
                 type="text"
+                className="main-input"
                 placeholder="Role"
                 value={empRole}
                 onChange={(e) => setEmpRole(e.target.value)}
             />
 
-            <br />
-
             <input
                 type="text"
+                className="main-input"
                 placeholder="Authentication Role"
                 value={empAuthenticationRole}
                 onChange={(e) => setEmpAuthenticationRole(e.target.value)}
             />
 
-            <br />
-
             <input
                 type="password"
+                className="main-input"
                 placeholder="Password"
                 value={empPassword}
                 onChange={(e) => setEmpPassword(e.target.value)}
             />
 
-            <br /><br />
+            <br />
 
-            <button onClick={createEmployee}>
+            <button className="submit-button" onClick={createEmployee}>
                 Create Employee
             </button>
 
-            <br /><br />
+            
 
         </div>
     )

@@ -101,3 +101,41 @@ body{
 .checkout-button:hover {
   opacity: 0.9;
 }
+
+.profile-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.profile-circle{
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: #29e5fa;
+    color: white;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 40px;
+    font-weight: bold;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.9);
+}
+
+.profile-name{
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #1e293b;
+    stop-opacity: inherit;
+}
+
+.dashboard-header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 40px;
+}

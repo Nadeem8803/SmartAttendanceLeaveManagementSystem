@@ -21,6 +21,8 @@ export default function Login(){
       localStorage.setItem("token", response.data.token);
       localStorage.setItem("employeeId", response.data.employeeId);
       localStorage.setItem("role", response.data.role.toUpperCase());
+      localStorage.setItem("empName", response.data.empName);
+      
 
       console.log(response.data.role);
       

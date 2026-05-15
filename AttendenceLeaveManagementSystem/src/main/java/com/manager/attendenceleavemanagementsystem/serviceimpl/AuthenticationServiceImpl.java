@@ -37,6 +37,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
                 employee.getEmpAuthenticationRole()
         );
 
-        return new LoginResponse(token,employee.getEmpId(),employee.getEmpAuthenticationRole());
+        return new LoginResponse(employee.getEmpId(), employee.getEmpAuthenticationRole(), token,employee.getEmpName());
     }
 }
