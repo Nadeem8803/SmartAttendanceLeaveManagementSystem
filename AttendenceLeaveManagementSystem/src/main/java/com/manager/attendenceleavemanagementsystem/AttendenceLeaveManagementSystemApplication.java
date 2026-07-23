@@ -9,7 +9,7 @@ public class AttendenceLeaveManagementSystemApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(AttendenceLeaveManagementSystemApplication.class, args);
-		System.out.println(new BCryptPasswordEncoder().encode("Rehan1234"));
+		System.out.println(new BCryptPasswordEncoder().encode("Rehan1234"));;
 	}
 
 }
